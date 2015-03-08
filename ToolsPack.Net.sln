@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsPack.FileIo", "ToolsPa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsPack.Parser", "ToolsPack.Parser\ToolsPack.Parser.csproj", "{306E2BB8-B5FA-482C-A509-688CF456C5EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsPack.Parser.Tests", "ToolsPack.Parser.Tests\ToolsPack.Parser.Tests.csproj", "{EF923EBC-159F-4A02-94BD-088E0E5A3A79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,11 +49,16 @@ Global
 		{306E2BB8-B5FA-482C-A509-688CF456C5EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{306E2BB8-B5FA-482C-A509-688CF456C5EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{306E2BB8-B5FA-482C-A509-688CF456C5EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF923EBC-159F-4A02-94BD-088E0E5A3A79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF923EBC-159F-4A02-94BD-088E0E5A3A79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF923EBC-159F-4A02-94BD-088E0E5A3A79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF923EBC-159F-4A02-94BD-088E0E5A3A79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8BC8B7D5-E0F0-4A85-8E8C-E6F30EBA8042} = {5D9BF4B0-7125-4BA4-9B8B-B1AB75C218FF}
+		{EF923EBC-159F-4A02-94BD-088E0E5A3A79} = {5D9BF4B0-7125-4BA4-9B8B-B1AB75C218FF}
 	EndGlobalSection
 EndGlobal
