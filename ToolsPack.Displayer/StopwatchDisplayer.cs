@@ -40,7 +40,7 @@ namespace ToolsPack.Parser
 		}
 
 		/**
-		 * Displayer elapsed time to a nice format
+		 * ArrayFormat elapsed time to a nice format
 		 * if (forceTimeUnit is null)
 		 *    the timeInSecond will be formated to min, ms, microSec or nanoSec base on its value
 		 * otherwise

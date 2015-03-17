@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsPack.Parser", "ToolsPa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsPack.Parser.Tests", "ToolsPack.Parser.Tests\ToolsPack.Parser.Tests.csproj", "{EF923EBC-159F-4A02-94BD-088E0E5A3A79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsPack.Displayer", "ToolsPack.Displayer\ToolsPack.Displayer.csproj", "{3533220C-4AA8-46F4-BBC4-8F23A512BB51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsPack.Displayer.Tests", "ToolsPack.Displayer.Tests\ToolsPack.Displayer.Tests.csproj", "{22C6A40D-70D0-4CEF-9B17-33B47BB3057A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,14 @@ Global
 		{EF923EBC-159F-4A02-94BD-088E0E5A3A79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF923EBC-159F-4A02-94BD-088E0E5A3A79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF923EBC-159F-4A02-94BD-088E0E5A3A79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3533220C-4AA8-46F4-BBC4-8F23A512BB51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3533220C-4AA8-46F4-BBC4-8F23A512BB51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3533220C-4AA8-46F4-BBC4-8F23A512BB51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3533220C-4AA8-46F4-BBC4-8F23A512BB51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22C6A40D-70D0-4CEF-9B17-33B47BB3057A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22C6A40D-70D0-4CEF-9B17-33B47BB3057A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22C6A40D-70D0-4CEF-9B17-33B47BB3057A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22C6A40D-70D0-4CEF-9B17-33B47BB3057A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,5 +72,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8BC8B7D5-E0F0-4A85-8E8C-E6F30EBA8042} = {5D9BF4B0-7125-4BA4-9B8B-B1AB75C218FF}
 		{EF923EBC-159F-4A02-94BD-088E0E5A3A79} = {5D9BF4B0-7125-4BA4-9B8B-B1AB75C218FF}
+		{22C6A40D-70D0-4CEF-9B17-33B47BB3057A} = {5D9BF4B0-7125-4BA4-9B8B-B1AB75C218FF}
 	EndGlobalSection
 EndGlobal

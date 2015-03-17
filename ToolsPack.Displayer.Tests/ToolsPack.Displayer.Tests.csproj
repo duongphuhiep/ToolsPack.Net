@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EF923EBC-159F-4A02-94BD-088E0E5A3A79}</ProjectGuid>
+    <ProjectGuid>{22C6A40D-70D0-4CEF-9B17-33B47BB3057A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ToolsPack.Parser.Tests</RootNamespace>
-    <AssemblyName>ToolsPack.Parser.Tests</AssemblyName>
+    <RootNamespace>ToolsPack.Displayer.Tests</RootNamespace>
+    <AssemblyName>ToolsPack.Displayer.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,8 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -54,21 +53,21 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ArrayDisplayerTests.cs">
+      <SubType>
+      </SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sqp\SearchQueryParserTests.cs" />
+    <Compile Include="StopwatchDisplayerTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ToolsPack.Displayer\ToolsPack.Displayer.csproj">
+      <Project>{3533220C-4AA8-46F4-BBC4-8F23A512BB51}</Project>
+      <Name>ToolsPack.Displayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ToolsPack.Log4net\ToolsPack.Log4net.csproj">
       <Project>{1E8DD840-4726-4B76-BF0A-14E0DB10EE16}</Project>
       <Name>ToolsPack.Log4net</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ToolsPack.Parser\ToolsPack.Parser.csproj">
-      <Project>{306E2BB8-B5FA-482C-A509-688CF456C5EC}</Project>
-      <Name>ToolsPack.Parser</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ToolsPack.Thread.Tests\ToolsPack.Thread.Tests.csproj">
-      <Project>{8BC8B7D5-E0F0-4A85-8E8C-E6F30EBA8042}</Project>
-      <Name>ToolsPack.Thread.Tests</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

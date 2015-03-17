@@ -10,13 +10,13 @@ namespace ToolsPack.Thread.Tests
 	{
 		private static readonly ILog Log = LogManager.GetLogger(typeof (NamedReaderWriterLockerTests));
 
-		private readonly NamedReaderWriterLocker _namedReaderWriterLocker = new NamedReaderWriterLocker();
+		private readonly NamedReaderWriterLocker<string> _namedReaderWriterLocker = new NamedReaderWriterLocker<string>();
 
 		[ClassInitialize]
 		public static void SetUp(TestContext context)
 		{
-			string log4netPattern = Log4NetQuickSetup.CreatePattern("Session");
-			Log4NetQuickSetup.SetUpConsole(log4netPattern);
+			string log4NetPattern = Log4NetQuickSetup.CreatePattern("Session");
+			Log4NetQuickSetup.SetUpConsole(log4NetPattern);
 		}
 
 		[TestMethod]
