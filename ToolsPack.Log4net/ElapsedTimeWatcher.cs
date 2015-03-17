@@ -60,210 +60,245 @@ namespace ToolsPack.Log4net
 
 		public void Debug(object message)
 		{
+			if (!_log.IsDebugEnabled) return;
 			_log.Debug(_scopeId + " - " + _unitarySw.Display() + " - " + message);
 			_unitarySw.Restart();
 		}
 
 		public void Debug(object message, Exception exception)
 		{
+			if (!_log.IsDebugEnabled) return;
 			_log.Debug(_scopeId + " - " + _unitarySw.Display() + " - " + message, exception);
 			_unitarySw.Restart();
 		}
 
 		public void DebugFormat(string format, params object[] args)
 		{
+			if (!_log.IsDebugEnabled) return;
 			_log.DebugFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, args);
 			_unitarySw.Restart();
 		}
 
 		public void DebugFormat(string format, object arg0)
 		{
+			if (!_log.IsDebugEnabled) return;
 			_log.DebugFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, arg0);
 			_unitarySw.Restart();
 		}
 
 		public void DebugFormat(string format, object arg0, object arg1)
 		{
+			if (!_log.IsDebugEnabled) return;
 			_log.DebugFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, arg0, arg1);
 			_unitarySw.Restart();
 		}
 
 		public void DebugFormat(string format, object arg0, object arg1, object arg2)
 		{
+			if (!_log.IsDebugEnabled) return;
 			_log.DebugFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, arg0, arg1, arg2);
 			_unitarySw.Restart();
 		}
 
 		public void DebugFormat(IFormatProvider provider, string format, params object[] args)
 		{
+			if (!_log.IsDebugEnabled) return;
 			_log.DebugFormat(provider, format, args);
 			_unitarySw.Restart();
 		}
 
 		public void Info(object message)
 		{
+			if (!_log.IsInfoEnabled) return;
 			_log.Info(_scopeId + " - " + _unitarySw.Display() + " - " + message);
 			_unitarySw.Restart();
 		}
 
 		public void Info(object message, Exception exception)
 		{
+			if (!_log.IsInfoEnabled) return;
 			_log.Info(_scopeId + " - " + _unitarySw.Display() + " - " + message, exception);
 			_unitarySw.Restart();
 		}
 
 		public void InfoFormat(string format, params object[] args)
 		{
+			if (!_log.IsInfoEnabled) return;
 			_log.InfoFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, args);
 			_unitarySw.Restart();
 		}
 
 		public void InfoFormat(string format, object arg0)
 		{
+			if (!_log.IsInfoEnabled) return;
 			_log.InfoFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, arg0);
 			_unitarySw.Restart();
 		}
 
 		public void InfoFormat(string format, object arg0, object arg1)
 		{
+			if (!_log.IsInfoEnabled) return;
 			_log.InfoFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, arg0, arg1);
 			_unitarySw.Restart();
 		}
 
 		public void InfoFormat(string format, object arg0, object arg1, object arg2)
 		{
+			if (!_log.IsInfoEnabled) return;
 			_log.InfoFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, arg0, arg1, arg2);
 			_unitarySw.Restart();
 		}
 
 		public void InfoFormat(IFormatProvider provider, string format, params object[] args)
 		{
+			if (!_log.IsInfoEnabled) return;
 			_log.InfoFormat(provider, format, args);
 			_unitarySw.Restart();
 		}
 
 		public void Warn(object message)
 		{
+			if (!_log.IsWarnEnabled) return;
 			_log.Warn(_scopeId + " - " + _unitarySw.Display() + " - " + message);
 			_unitarySw.Restart();
 		}
 
 		public void Warn(object message, Exception exception)
 		{
+			if (!_log.IsWarnEnabled) return;
 			_log.Warn(_scopeId + " - " + _unitarySw.Display() + " - " + message, exception);
 			_unitarySw.Restart();
 		}
 
 		public void WarnFormat(string format, params object[] args)
 		{
+			if (!_log.IsWarnEnabled) return;
 			_log.WarnFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, args);
 			_unitarySw.Restart();
 		}
 
 		public void WarnFormat(string format, object arg0)
 		{
+			if (!_log.IsWarnEnabled) return;
 			_log.WarnFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, arg0);
 			_unitarySw.Restart();
 		}
 
 		public void WarnFormat(string format, object arg0, object arg1)
 		{
+			if (!_log.IsWarnEnabled) return;
 			_log.WarnFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, arg0, arg1);
 			_unitarySw.Restart();
 		}
 
 		public void WarnFormat(string format, object arg0, object arg1, object arg2)
 		{
+			if (!_log.IsWarnEnabled) return;
 			_log.WarnFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, arg0, arg1, arg2);
 			_unitarySw.Restart();
 		}
 
 		public void WarnFormat(IFormatProvider provider, string format, params object[] args)
 		{
+			if (!_log.IsWarnEnabled) return;
 			_log.WarnFormat(provider, format, args);
 			_unitarySw.Restart();
 		}
 
 		public void Error(object message)
 		{
+			if (!_log.IsErrorEnabled) return;
 			_log.Error(_scopeId + " - " + _unitarySw.Display() + " - " + message);
 			_unitarySw.Restart();
 		}
 
 		public void Error(object message, Exception exception)
 		{
+			if (!_log.IsErrorEnabled) return;
 			_log.Error(_scopeId + " - " + _unitarySw.Display() + " - " + message, exception);
 			_unitarySw.Restart();
 		}
 
 		public void ErrorFormat(string format, params object[] args)
 		{
+			if (!_log.IsErrorEnabled) return;
 			_log.ErrorFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, args);
 			_unitarySw.Restart();
 		}
 
 		public void ErrorFormat(string format, object arg0)
 		{
+			if (!_log.IsErrorEnabled) return;
 			_log.ErrorFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, arg0);
 			_unitarySw.Restart();
 		}
 
 		public void ErrorFormat(string format, object arg0, object arg1)
 		{
+			if (!_log.IsErrorEnabled) return;
 			_log.ErrorFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, arg0, arg1);
 			_unitarySw.Restart();
 		}
 
 		public void ErrorFormat(string format, object arg0, object arg1, object arg2)
 		{
+			if (!_log.IsErrorEnabled) return;
 			_log.ErrorFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, arg0, arg1, arg2);
 			_unitarySw.Restart();
 		}
 
 		public void ErrorFormat(IFormatProvider provider, string format, params object[] args)
 		{
+			if (!_log.IsErrorEnabled) return;
 			_log.ErrorFormat(provider, format, args);
 			_unitarySw.Restart();
 		}
 
 		public void Fatal(object message)
 		{
+			if (!_log.IsFatalEnabled) return;
 			_log.Fatal(_scopeId + " - " + _unitarySw.Display() + " - " + message);
 			_unitarySw.Restart();
 		}
 
 		public void Fatal(object message, Exception exception)
 		{
+			if (!_log.IsFatalEnabled) return;
 			_log.Fatal(_scopeId + " - " + _unitarySw.Display() + " - " + message, exception);
 			_unitarySw.Restart();
 		}
 
 		public void FatalFormat(string format, params object[] args)
 		{
+			if (!_log.IsFatalEnabled) return;
 			_log.FatalFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, args);
 			_unitarySw.Restart();
 		}
 
 		public void FatalFormat(string format, object arg0)
 		{
+			if (!_log.IsFatalEnabled) return;
 			_log.FatalFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, arg0);
 			_unitarySw.Restart();
 		}
 
 		public void FatalFormat(string format, object arg0, object arg1)
 		{
+			if (!_log.IsFatalEnabled) return;
 			_log.FatalFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, arg0, arg1);
 			_unitarySw.Restart();
 		}
 
 		public void FatalFormat(string format, object arg0, object arg1, object arg2)
 		{
+			if (!_log.IsFatalEnabled) return;
 			_log.FatalFormat(_scopeId + " - " + _unitarySw.Display() + " - " + format, arg0, arg1, arg2);
 			_unitarySw.Restart();
 		}
 
 		public void FatalFormat(IFormatProvider provider, string format, params object[] args)
 		{
+			if (!_log.IsFatalEnabled) return;
 			_log.FatalFormat(provider, format, args);
 			_unitarySw.Restart();
 		}
