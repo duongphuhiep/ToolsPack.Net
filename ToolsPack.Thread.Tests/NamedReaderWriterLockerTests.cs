@@ -16,7 +16,7 @@ namespace ToolsPack.Thread.Tests
 		public static void SetUp(TestContext context)
 		{
 			string log4NetPattern = Log4NetQuickSetup.CreatePattern("Session");
-			Log4NetQuickSetup.SetUpConsole(false, log4NetPattern);
+			Log4NetQuickSetup.SetUpConsole(log4NetPattern);
 		}
 
 		[TestMethod]
