@@ -10,16 +10,21 @@ using ToolsPack.Parser;
 namespace ToolsPack.Log4net
 {
 	/// <summary>
-	/// Micro benchmark a block of code
+	/// Micro benchmark a block of code, add elapsed time in each log message and the total elapsed time of the code block
+	/// 
+	///            private static readonly ILog Log = LogManager.GetLogger(typeof(MyClass));
 	/// 
 	///            using (var etw = new ElapsedTimeWatcher(Log, "checkIntraday"))
 	///            {
 	///                Thread.Sleep(100);
 	///                etw.Debug("step 1");
+	/// 
 	///                Thread.Sleep(200);
 	///                etw.Debug("step 2");
+	/// 
 	///                Thread.Sleep(300);
 	///                etw.Info("final step)");
+	/// 
 	///                Thread.Sleep(400);
 	///            }
 	/// </summary>

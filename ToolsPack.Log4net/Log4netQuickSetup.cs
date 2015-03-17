@@ -1,10 +1,15 @@
 ﻿using log4net.Appender;
+using Log4Net.Async;
 using log4net.Config;
 using log4net.Core;
 using log4net.Layout;
 
 namespace ToolsPack.Log4net
 {
+	/// <summary>
+	/// No need to create a log4net.config file. We can quickly setup log4net in one line of code. 
+	/// This helper is often use in a console program or a unit test.
+	/// </summary>
 	public static class Log4NetQuickSetup
 	{
 		private const string DefaultPattern = "%date{HH:mm:ss,fff} [%-5level] %message    [%logger{1}:%line]%newline";
@@ -26,7 +31,7 @@ namespace ToolsPack.Log4net
 			       "}] %message    [%logger{1}:%line]%newline";
 		}
 
-		public static void SetUpConsole(bool colored = false, string pattern = DefaultPattern)
+		public static void SetUpConsole(string pattern = DefaultPattern, bool colored = false)
 		{
 			var layout = new PatternLayout(pattern);
 
@@ -45,29 +50,31 @@ namespace ToolsPack.Log4net
 			appender.Layout = layout;
 			appender.Threshold = Level.Debug;
 
-			layout.ActivateOptions();
-			appender.ActivateOptions();
-			BasicConfigurator.Configure(appender);
+			Setup(layout, appender);
 		}
 
-		private static void SetUpFileRolling(string filePath = DefaultLogFile, string pattern = DefaultPattern)
+		private static void SetUpFileRolling(string filePath = DefaultLogFile, string pattern = DefaultPattern, bool async = true)
 		{
 			var layout = new PatternLayout(pattern);
-			var appender = new RollingFileAppender
-			{
-				File = filePath,
-				Layout = layout,
-				AppendToFile = true,
-				MaximumFileSize = "100MB",
-				DatePattern = "yyyyMMdd",
-				MaxSizeRollBackups = 50,
-				StaticLogFileName = true
-			};
+			var appender = async ? new AsyncRollingFileAppender() : new RollingFileAppender();
 
+			//setup appender
+			appender.File = filePath;
+			appender.Layout = layout;
+			appender.AppendToFile = true;
+			appender.MaximumFileSize = "100MB";
+			appender.DatePattern = "yyyyMMdd";
+			appender.MaxSizeRollBackups = 50;
+			appender.StaticLogFileName = true;
+
+			Setup(layout, appender);
+		}
+
+		private static void Setup(PatternLayout layout, AppenderSkeleton appender)
+		{
 			layout.ActivateOptions();
 			appender.ActivateOptions();
 			BasicConfigurator.Configure(appender);
 		}
-
 	}
 }
