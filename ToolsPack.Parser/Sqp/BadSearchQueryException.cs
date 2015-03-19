@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace ToolsPack.Parser.Sqp
 {
-	public class BadSearchQueryException : ApplicationException
+	public class BadSearchQueryException : Exception
 	{
 		public BadSearchQueryException() : base()
 		{
