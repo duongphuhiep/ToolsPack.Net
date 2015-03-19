@@ -53,7 +53,7 @@ namespace ToolsPack.Log4net
 			Setup(layout, appender);
 		}
 
-		private static void SetUpFileRolling(string filePath = DefaultLogFile, string pattern = DefaultPattern, bool async = true)
+		public static void SetUpFileRolling(string filePath = DefaultLogFile, string pattern = DefaultPattern, bool async = true)
 		{
 			var layout = new PatternLayout(pattern);
 			var appender = async ? new AsyncRollingFileAppender() : new RollingFileAppender();

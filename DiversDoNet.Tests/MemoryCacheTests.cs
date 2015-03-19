@@ -11,7 +11,7 @@ namespace DiversDoNet.Tests
 		public void TestMethod1()
 		{
 			var memoryCache = new MemoryCache("Foo");
-			CacheItemPolicy policy = new CacheItemPolicy();
+			CacheItemPolicy pưolicy = new CacheItemPolicy();
 			memoryCache.AddOrGetExisting("Pop", 123, DateTimeOffset.MaxValue);
 
 		}

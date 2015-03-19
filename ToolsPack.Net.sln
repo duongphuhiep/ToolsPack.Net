@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsPack.Displayer.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiversDoNet.Tests", "DiversDoNet.Tests\DiversDoNet.Tests.csproj", "{0CF01711-8AAE-43CF-89F1-BCE9A302D998}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsPack.Log4net.Tests", "ToolsPack.Log4net.Tests\ToolsPack.Log4net.Tests.csproj", "{5CE4189D-73D9-49A1-B020-1CFE9EED037E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{0CF01711-8AAE-43CF-89F1-BCE9A302D998}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CF01711-8AAE-43CF-89F1-BCE9A302D998}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CF01711-8AAE-43CF-89F1-BCE9A302D998}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CE4189D-73D9-49A1-B020-1CFE9EED037E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CE4189D-73D9-49A1-B020-1CFE9EED037E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CE4189D-73D9-49A1-B020-1CFE9EED037E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CE4189D-73D9-49A1-B020-1CFE9EED037E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,5 +86,6 @@ Global
 		{EF923EBC-159F-4A02-94BD-088E0E5A3A79} = {5D9BF4B0-7125-4BA4-9B8B-B1AB75C218FF}
 		{22C6A40D-70D0-4CEF-9B17-33B47BB3057A} = {5D9BF4B0-7125-4BA4-9B8B-B1AB75C218FF}
 		{0CF01711-8AAE-43CF-89F1-BCE9A302D998} = {5D9BF4B0-7125-4BA4-9B8B-B1AB75C218FF}
+		{5CE4189D-73D9-49A1-B020-1CFE9EED037E} = {5D9BF4B0-7125-4BA4-9B8B-B1AB75C218FF}
 	EndGlobalSection
 EndGlobal
