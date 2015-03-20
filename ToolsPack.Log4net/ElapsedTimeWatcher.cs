@@ -14,7 +14,7 @@ namespace ToolsPack.Log4net
 	/// 
 	///            private static readonly ILog Log = LogManager.GetLogger(typeof(MyClass));
 	/// 
-	///            using (var etw = ElapsedTimeWatcher.Create(Log, "checkIntraday"))
+	///            using (var etw = new ElapsedTimeWatcher(Log, "checkIntraday"))
 	///            {
 	///                Thread.Sleep(100);
 	///                etw.Debug("step 1");
@@ -33,19 +33,15 @@ namespace ToolsPack.Log4net
 		private bool _autoJumpContext = false;
 		private int _autoJumpContextToInfo = 5;
 		private int _autoJumpContextToWarning = 10;
-
 		private bool _autoJump = false;
 		private int _autoJumpToInfo = 2;
 		private int _autoJumpToWarning = 5;
-
 		private LoggerLevel _sumLogLevel = LoggerLevel.Debug;
-
 		private readonly ILog _log;
 		private readonly Stopwatch _scopeSw;
 		private readonly Stopwatch _unitarySw;
 		private readonly string _scopeId;
 		private readonly string _context;
-
 		/// <summary>
 		/// scopeId is DisplayMicroed on every log messages.
 		/// context is DisplayMicroed at the end to tell total time spent on the scope
@@ -58,9 +54,7 @@ namespace ToolsPack.Log4net
 			_scopeSw = Stopwatch.StartNew();
 			_unitarySw = Stopwatch.StartNew();
 		}
-
 		#region Fluent API
-
 		public static ElapsedTimeWatcher Create(ILog log, string scopeId, string context = null, string spaceBeforeLog = null)
 		{
 			if (String.IsNullOrWhiteSpace(context))
@@ -70,19 +64,17 @@ namespace ToolsPack.Log4net
 			spaceBeforeLog = spaceBeforeLog ?? "";
 			return new ElapsedTimeWatcher(log, scopeId, context, spaceBeforeLog);
 		}
-
 		/// <summary>
 		/// For the last log (the total elpased time log)
 		/// The log level automaticly jump up to INFO or WARN if the elapsed time exceed the threshold
 		/// </summary>
-		public ElapsedTimeWatcher AutoJumpSumLog(int miliSecondToInfo=5, int miliSecondToWarning=10)
+		public ElapsedTimeWatcher AutoJumpLastLog(int miliSecondToInfo = 5, int miliSecondToWarning = 10)
 		{
 			_autoJumpContext = true;
 			_autoJumpContextToInfo = miliSecondToInfo;
 			_autoJumpContextToWarning = miliSecondToWarning;
 			return this;
 		}
-
 		/// <summary>
 		/// The log level automaticly jump up to INFO or WARN if the elapsed time exceed the threshold
 		/// </summary>
@@ -93,33 +85,28 @@ namespace ToolsPack.Log4net
 			_autoJumpToWarning = miliSecondToWarning;
 			return this;
 		}
-
-
 		/// <summary>
 		/// Set log level of the last message (on disposal)
 		/// </summary>
-		/// <param name="level"></param>
-		/// <returns></returns>
-		public ElapsedTimeWatcher SumMessageLevel(LoggerLevel level)
+		public ElapsedTimeWatcher Level(LoggerLevel level)
 		{
 			_sumLogLevel = level;
 			return this;
 		}
-
-		public ElapsedTimeWatcher SumMessageInfo()
+		/// <summary>
+		/// Turn the sum up message (Total elapsed) to Info
+		/// </summary>
+		public ElapsedTimeWatcher Info()
 		{
-			return SumMessageLevel(LoggerLevel.Info);
+			return Level(LoggerLevel.Info);
 		}
-
 		#endregion
-
 		public void RestartScopeStopwatch()
 		{
 			_scopeSw.Stop();
 			_scopeSw.Reset();
 			_scopeSw.Start();
 		}
-
 		/// <summary>
 		/// Restart the unitary stopwatch
 		/// </summary>
@@ -129,7 +116,6 @@ namespace ToolsPack.Log4net
 			_unitarySw.Reset();
 			_unitarySw.Start();
 		}
-
 		private LoggerLevel? GetLevel()
 		{
 			if (_scopeSw.ElapsedMilliseconds >= _autoJumpContextToWarning)
@@ -142,7 +128,6 @@ namespace ToolsPack.Log4net
 			}
 			return null;
 		}
-		
 		private LoggerLevel? GetLevelInScope()
 		{
 			if (_unitarySw.ElapsedMilliseconds >= _autoJumpToWarning)
@@ -155,7 +140,6 @@ namespace ToolsPack.Log4net
 			}
 			return null;
 		}
-
 		public void Dispose()
 		{
 			if (_autoJumpContext)
@@ -174,7 +158,6 @@ namespace ToolsPack.Log4net
 					return;
 				}
 			}
-
 			switch (_sumLogLevel)
 			{
 				case LoggerLevel.Info:
@@ -194,14 +177,11 @@ namespace ToolsPack.Log4net
 					break;
 			}
 		}
-
 		#region ILog
-
 		public ILogger Logger
 		{
 			get { return _log.Logger; }
 		}
-
 		public void Debug(object message)
 		{
 			if (!_log.IsDebugEnabled) return;
@@ -226,7 +206,6 @@ namespace ToolsPack.Log4net
 			_log.Debug(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + message);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void Debug(object message, Exception exception)
 		{
 			if (!_log.IsDebugEnabled) return;
@@ -251,7 +230,6 @@ namespace ToolsPack.Log4net
 			_log.Debug(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + message, exception);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void DebugFormat(string format, params object[] args)
 		{
 			if (!_log.IsDebugEnabled) return;
@@ -276,7 +254,6 @@ namespace ToolsPack.Log4net
 			_log.DebugFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, args);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void DebugFormat(string format, object arg0)
 		{
 			if (!_log.IsDebugEnabled) return;
@@ -301,7 +278,6 @@ namespace ToolsPack.Log4net
 			_log.DebugFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, arg0);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void DebugFormat(string format, object arg0, object arg1)
 		{
 			if (!_log.IsDebugEnabled) return;
@@ -326,7 +302,6 @@ namespace ToolsPack.Log4net
 			_log.DebugFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, arg0, arg1);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void DebugFormat(string format, object arg0, object arg1, object arg2)
 		{
 			if (!_log.IsDebugEnabled) return;
@@ -351,7 +326,6 @@ namespace ToolsPack.Log4net
 			_log.DebugFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, arg0, arg1, arg2);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void DebugFormat(IFormatProvider provider, string format, params object[] args)
 		{
 			if (!_log.IsDebugEnabled) return;
@@ -376,7 +350,6 @@ namespace ToolsPack.Log4net
 			_log.DebugFormat(provider, format, args);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void Info(object message)
 		{
 			if (!_log.IsInfoEnabled) return;
@@ -394,7 +367,6 @@ namespace ToolsPack.Log4net
 			_log.Info(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + message);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void Info(object message, Exception exception)
 		{
 			if (!_log.IsInfoEnabled) return;
@@ -412,7 +384,6 @@ namespace ToolsPack.Log4net
 			_log.Info(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + message, exception);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void InfoFormat(string format, params object[] args)
 		{
 			if (!_log.IsInfoEnabled) return;
@@ -430,7 +401,6 @@ namespace ToolsPack.Log4net
 			_log.InfoFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, args);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void InfoFormat(string format, object arg0)
 		{
 			if (!_log.IsInfoEnabled) return;
@@ -448,7 +418,6 @@ namespace ToolsPack.Log4net
 			_log.InfoFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, arg0);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void InfoFormat(string format, object arg0, object arg1)
 		{
 			if (!_log.IsInfoEnabled) return;
@@ -466,7 +435,6 @@ namespace ToolsPack.Log4net
 			_log.InfoFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, arg0, arg1);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void InfoFormat(string format, object arg0, object arg1, object arg2)
 		{
 			if (!_log.IsInfoEnabled) return;
@@ -484,7 +452,6 @@ namespace ToolsPack.Log4net
 			_log.InfoFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, arg0, arg1, arg2);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void InfoFormat(IFormatProvider provider, string format, params object[] args)
 		{
 			if (!_log.IsInfoEnabled) return;
@@ -502,7 +469,6 @@ namespace ToolsPack.Log4net
 			_log.InfoFormat(provider, format, args);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void Warn(object message)
 		{
 			if (!_log.IsWarnEnabled) return;
@@ -510,7 +476,6 @@ namespace ToolsPack.Log4net
 			_log.Warn(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + message);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void Warn(object message, Exception exception)
 		{
 			if (!_log.IsWarnEnabled) return;
@@ -518,7 +483,6 @@ namespace ToolsPack.Log4net
 			_log.Warn(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + message, exception);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void WarnFormat(string format, params object[] args)
 		{
 			if (!_log.IsWarnEnabled) return;
@@ -526,7 +490,6 @@ namespace ToolsPack.Log4net
 			_log.WarnFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, args);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void WarnFormat(string format, object arg0)
 		{
 			if (!_log.IsWarnEnabled) return;
@@ -534,7 +497,6 @@ namespace ToolsPack.Log4net
 			_log.WarnFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, arg0);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void WarnFormat(string format, object arg0, object arg1)
 		{
 			if (!_log.IsWarnEnabled) return;
@@ -542,7 +504,6 @@ namespace ToolsPack.Log4net
 			_log.WarnFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, arg0, arg1);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void WarnFormat(string format, object arg0, object arg1, object arg2)
 		{
 			if (!_log.IsWarnEnabled) return;
@@ -550,7 +511,6 @@ namespace ToolsPack.Log4net
 			_log.WarnFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, arg0, arg1, arg2);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void WarnFormat(IFormatProvider provider, string format, params object[] args)
 		{
 			if (!_log.IsWarnEnabled) return;
@@ -558,7 +518,6 @@ namespace ToolsPack.Log4net
 			_log.WarnFormat(provider, format, args);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void Error(object message)
 		{
 			if (!_log.IsErrorEnabled) return;
@@ -566,7 +525,6 @@ namespace ToolsPack.Log4net
 			_log.Error(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + message);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void Error(object message, Exception exception)
 		{
 			if (!_log.IsErrorEnabled) return;
@@ -574,7 +532,6 @@ namespace ToolsPack.Log4net
 			_log.Error(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + message, exception);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void ErrorFormat(string format, params object[] args)
 		{
 			if (!_log.IsErrorEnabled) return;
@@ -582,7 +539,6 @@ namespace ToolsPack.Log4net
 			_log.ErrorFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, args);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void ErrorFormat(string format, object arg0)
 		{
 			if (!_log.IsErrorEnabled) return;
@@ -590,7 +546,6 @@ namespace ToolsPack.Log4net
 			_log.ErrorFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, arg0);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void ErrorFormat(string format, object arg0, object arg1)
 		{
 			if (!_log.IsErrorEnabled) return;
@@ -598,7 +553,6 @@ namespace ToolsPack.Log4net
 			_log.ErrorFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, arg0, arg1);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void ErrorFormat(string format, object arg0, object arg1, object arg2)
 		{
 			if (!_log.IsErrorEnabled) return;
@@ -606,7 +560,6 @@ namespace ToolsPack.Log4net
 			_log.ErrorFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, arg0, arg1, arg2);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void ErrorFormat(IFormatProvider provider, string format, params object[] args)
 		{
 			if (!_log.IsErrorEnabled) return;
@@ -614,7 +567,6 @@ namespace ToolsPack.Log4net
 			_log.ErrorFormat(provider, format, args);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void Fatal(object message)
 		{
 			if (!_log.IsFatalEnabled) return;
@@ -622,7 +574,6 @@ namespace ToolsPack.Log4net
 			_log.Fatal(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + message);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void Fatal(object message, Exception exception)
 		{
 			if (!_log.IsFatalEnabled) return;
@@ -630,7 +581,6 @@ namespace ToolsPack.Log4net
 			_log.Fatal(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + message, exception);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void FatalFormat(string format, params object[] args)
 		{
 			if (!_log.IsFatalEnabled) return;
@@ -638,7 +588,6 @@ namespace ToolsPack.Log4net
 			_log.FatalFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, args);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void FatalFormat(string format, object arg0)
 		{
 			if (!_log.IsFatalEnabled) return;
@@ -646,7 +595,6 @@ namespace ToolsPack.Log4net
 			_log.FatalFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, arg0);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void FatalFormat(string format, object arg0, object arg1)
 		{
 			if (!_log.IsFatalEnabled) return;
@@ -654,7 +602,6 @@ namespace ToolsPack.Log4net
 			_log.FatalFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, arg0, arg1);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void FatalFormat(string format, object arg0, object arg1, object arg2)
 		{
 			if (!_log.IsFatalEnabled) return;
@@ -662,7 +609,6 @@ namespace ToolsPack.Log4net
 			_log.FatalFormat(_scopeId + " - " + _unitarySw.DisplayMicro() + " - " + format, arg0, arg1, arg2);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public void FatalFormat(IFormatProvider provider, string format, params object[] args)
 		{
 			if (!_log.IsFatalEnabled) return;
@@ -670,34 +616,27 @@ namespace ToolsPack.Log4net
 			_log.FatalFormat(provider, format, args);
 			_unitarySw.Reset(); _unitarySw.Start();
 		}
-
 		public bool IsDebugEnabled
 		{
 			get { return _log.IsDebugEnabled; }
 		}
-
 		public bool IsInfoEnabled
 		{
 			get { return _log.IsInfoEnabled; }
 		}
-
 		public bool IsWarnEnabled
 		{
 			get { return _log.IsWarnEnabled; }
 		}
-
 		public bool IsErrorEnabled
 		{
 			get { return _log.IsErrorEnabled; }
 		}
-
 		public bool IsFatalEnabled
 		{
 			get { return _log.IsFatalEnabled; }
 		}
-
 		#endregion
-
 		public enum LoggerLevel
 		{
 			Debug, Info, Warn, Error, Fatal
