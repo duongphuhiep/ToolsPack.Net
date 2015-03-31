@@ -3,12 +3,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0CF01711-8AAE-43CF-89F1-BCE9A302D998}</ProjectGuid>
+    <ProjectGuid>{536FC9C5-D060-4B9C-9B7A-DBBD60A748E8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DiversDoNet.Tests</RootNamespace>
-    <AssemblyName>DiversDoNet.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>ToolsPack.Collection.Tests</RootNamespace>
+    <AssemblyName>ToolsPack.Collection.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -35,17 +35,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="C5">
+      <HintPath>..\packages\C5.2.3.0.1\lib\net40\C5.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Shielded">
-      <HintPath>..\packages\Shielded.1.1.3\lib\net40\Shielded.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Runtime.Caching" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -60,20 +56,25 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="MemoryCacheTests.cs" />
-    <Compile Include="model\Exposure.cs" />
-    <Compile Include="model\Resa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShieldedTransactionTest.cs" />
+    <Compile Include="CollectionTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\ToolsPack.Collection\ToolsPack.Collection.csproj">
+      <Project>{8C47C5C8-0233-4E12-A2C4-5BE4755A4AC7}</Project>
+      <Name>ToolsPack.Collection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToolsPack.Displayer\ToolsPack.Displayer.csproj">
+      <Project>{3533220c-4aa8-46f4-bbc4-8f23a512bb51}</Project>
+      <Name>ToolsPack.Displayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ToolsPack.Log4net\ToolsPack.Log4net.csproj">
       <Project>{1E8DD840-4726-4B76-BF0A-14E0DB10EE16}</Project>
       <Name>ToolsPack.Log4net</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

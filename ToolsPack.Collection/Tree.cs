@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Vectalis.Tools.Common
+namespace ToolsPack.Collection
 {
 	/// <summary>
 	/// A generic treeNode structure.

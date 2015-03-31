@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using System.Diagnostics;
 
-namespace ToolsPack.Parser
+namespace ToolsPack.Displayer
 {
 	public static class StopwatchDisplayer
 	{

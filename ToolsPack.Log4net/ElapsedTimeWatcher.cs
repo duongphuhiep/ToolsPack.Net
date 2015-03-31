@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using log4net;
 using log4net.Core;
-using ToolsPack.Parser;
+using ToolsPack.Displayer;
 
 namespace ToolsPack.Log4net
 {

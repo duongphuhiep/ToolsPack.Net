@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using log4net;
+using ToolsPack.Displayer;
 using ToolsPack.Log4net;
 using ToolsPack.Parser;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
