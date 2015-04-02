@@ -47,7 +47,7 @@ namespace DiversDoNet.Tests.model
 		}
 
 		private Key _k = new Key();
-		public virtual Key K {
+		public Key K {
 			get { return _k; }
 			set { _k = value; }
 		}
