@@ -183,8 +183,8 @@ namespace DiversDoNet.Tests
 						exposureStore["C1"].Amount = 160;
 						resaStore.Remove(new Resa.Key("D1", "C1"));
 
-						Log.Info("current exposure of C1 = "+exposureStore["C1"].Amount);
-						Log.Info("current resas of C1 = " + resaStore.Count);
+						//Log.Info("current exposure of C1 = " + exposureStore["C1"].Amount);
+						//Log.Info("current resas of C1 = " + resaStore.Count);
 						Log.Info("some value is changed in transaction 2");
 						Thread.Sleep(100);
 
@@ -199,7 +199,6 @@ namespace DiversDoNet.Tests
 				}
 			});
 
-			
 			Assert.AreEqual(100, exposureStore["C1"].Amount);
 			Assert.AreEqual(4, resaStore.Count);
 			Log.Info("everything look normal outside the transaction");
