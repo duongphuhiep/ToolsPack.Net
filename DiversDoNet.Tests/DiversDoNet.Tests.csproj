@@ -61,6 +61,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="MemoryCacheTests.cs" />
+    <Compile Include="MeNghiaTest.cs" />
     <Compile Include="model\Exposure.cs" />
     <Compile Include="model\Resa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +71,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ToolsPack.FileIo\ToolsPack.FileIo.csproj">
+      <Project>{fb9d1a9e-43ca-4605-9429-90ab274417d4}</Project>
+      <Name>ToolsPack.FileIo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ToolsPack.Log4net\ToolsPack.Log4net.csproj">
       <Project>{1E8DD840-4726-4B76-BF0A-14E0DB10EE16}</Project>
       <Name>ToolsPack.Log4net</Name>
