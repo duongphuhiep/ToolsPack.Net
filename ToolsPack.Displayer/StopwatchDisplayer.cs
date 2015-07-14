@@ -1,9 +1,12 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.Globalization;
 
 namespace ToolsPack.Displayer
 {
 	public static class StopwatchDisplayer
 	{
+		private static readonly IFormatProvider DefaultCultureInfo = CultureInfo.InvariantCulture;
 		public enum TimeUnit
 		{
 			MiliSecond,
@@ -36,7 +39,7 @@ namespace ToolsPack.Displayer
 		}
 
 		/**
-		 * ArrayFormat elapsed time to a nice format
+		 * Displayer elapsed time to a nice format
 		 * if (forceTimeUnit is null)
 		 *    the timeInSecond will be formated to min, ms, microSec or nanoSec base on its value
 		 * otherwise
@@ -48,30 +51,30 @@ namespace ToolsPack.Displayer
 			{
 				switch (forceTimeUnit)
 				{
-					case TimeUnit.MicroSecond: return (timeInSecond * 1000000.0).ToString("0") + " mcs";
-					case TimeUnit.Second: return (timeInSecond).ToString("0.##") + " s";
+					case TimeUnit.MicroSecond: return (timeInSecond * 1000000.0).ToString("0", DefaultCultureInfo) + " mcs";
+					case TimeUnit.Second: return (timeInSecond).ToString("0.##", DefaultCultureInfo) + " s";
 					default:
-						return (timeInSecond * 1000.0).ToString("0.##") + " ms";
+						return (timeInSecond * 1000.0).ToString("0.##", DefaultCultureInfo) + " ms";
 				}
 			}
 
 			if (timeInSecond >= 60)
 			{
-				return (timeInSecond / 60.0).ToString("0.#") + " min";
+				return (timeInSecond / 60.0).ToString("0.#", DefaultCultureInfo) + " min";
 			}
 			if (timeInSecond >= 1)
 			{
-				return timeInSecond.ToString("0.#") + " s";
+				return timeInSecond.ToString("0.#", DefaultCultureInfo) + " s";
 			}
 			if (timeInSecond >= 0.001)
 			{
-				return (timeInSecond * 1000.0).ToString("0") + " ms";
+				return (timeInSecond * 1000.0).ToString("0", DefaultCultureInfo) + " ms";
 			}
 			if (timeInSecond >= 0.000001)
 			{
-				return (timeInSecond * 1000000.0).ToString("0") + " mcs";
+				return (timeInSecond * 1000000.0).ToString("0", DefaultCultureInfo) + " mcs";
 			}
-			return (timeInSecond * 1000000000.0).ToString("0") + " ns";
+			return (timeInSecond * 1000000000.0).ToString("0", DefaultCultureInfo) + " ns";
 		}
 	}
 }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
 using System.Threading;
 
 namespace ToolsPack.Thread
@@ -75,46 +72,5 @@ namespace ToolsPack.Thread
 				rwLock.ExitWriteLock();
 			}
 		}
-
-		public TResult RunWithWriteLock<TResult>(IEnumerable<T> names, Func<TResult> body)
-		{
-			var rwLocks = from name in names select GetLock(name);
-			try
-			{
-				foreach (var rwLock in rwLocks)
-				{
-					rwLock.EnterWriteLock();
-				}
-				return body();
-			}
-			finally
-			{
-				foreach (var rwLock in rwLocks)
-				{
-					rwLock.ExitWriteLock();
-				}
-			}
-		}
-
-		public void RunWithWriteLock(IEnumerable<T> names, Action body)
-		{
-			var rwLocks = from name in names select GetLock(name);
-			try
-			{
-				foreach (var rwLock in rwLocks)
-				{
-					rwLock.EnterWriteLock();
-				}
-				body();
-			}
-			finally
-			{
-				foreach (var rwLock in rwLocks)
-				{
-					rwLock.ExitWriteLock();
-				}
-			}
-		}
-
 	}
 }
