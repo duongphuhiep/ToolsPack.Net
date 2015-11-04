@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsPack.Collection", "ToolsPack.Collection\ToolsPack.Collection.csproj", "{8C47C5C8-0233-4E12-A2C4-5BE4755A4AC7}"
 EndProject
@@ -28,6 +28,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsPack.Log4net.Tests", "ToolsPack.Log4net.Tests\ToolsPack.Log4net.Tests.csproj", "{5CE4189D-73D9-49A1-B020-1CFE9EED037E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsPack.Collection.Tests", "ToolsPack.Collection.Tests\ToolsPack.Collection.Tests.csproj", "{536FC9C5-D060-4B9C-9B7A-DBBD60A748E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsPack.Sql", "ToolsPack.Sql\ToolsPack.Sql.csproj", "{7AD30A8E-5EB7-419D-87BB-7761566A549E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,10 @@ Global
 		{536FC9C5-D060-4B9C-9B7A-DBBD60A748E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{536FC9C5-D060-4B9C-9B7A-DBBD60A748E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{536FC9C5-D060-4B9C-9B7A-DBBD60A748E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AD30A8E-5EB7-419D-87BB-7761566A549E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AD30A8E-5EB7-419D-87BB-7761566A549E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AD30A8E-5EB7-419D-87BB-7761566A549E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AD30A8E-5EB7-419D-87BB-7761566A549E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
