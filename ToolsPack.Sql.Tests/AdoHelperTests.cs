@@ -39,8 +39,14 @@ namespace ToolsPack.Sql.Tests
 				Assert.AreEqual(14, cmd.Parameters[1].Value);
 
 				Assert.AreEqual("@k2", cmd.Parameters[2].ParameterName);
+				Assert.AreEqual((decimal)12.5, cmd.Parameters[2].Value);
+
 				Assert.AreEqual("@k3", cmd.Parameters[3].ParameterName);
+				Assert.AreEqual("bbb", cmd.Parameters[3].Value);
+				Assert.AreEqual(50, cmd.Parameters[3].Size);
+
 				Assert.AreEqual("@k4", cmd.Parameters[4].ParameterName);
+				Assert.AreEqual(1.5, cmd.Parameters[4].Value);
 			}
 		}
 	}
