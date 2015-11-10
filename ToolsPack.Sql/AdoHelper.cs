@@ -24,7 +24,7 @@ namespace ToolsPack.Sql
 	///        }
 	///    }
 	/// </summary>
-	class AdoHelper : IDisposable
+	public class AdoHelper : IDisposable
 	{
 		// Internal members
 		protected string _connString = null;
