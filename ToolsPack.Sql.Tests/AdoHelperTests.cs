@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using ToolsPack.Log4net;
+using System.Data.SqlClient;
 
 namespace ToolsPack.Sql.Tests
 {
@@ -16,6 +17,14 @@ namespace ToolsPack.Sql.Tests
 		public void SetUp()
 		{
 			Log4NetQuickSetup.SetUpConsole();
+		}
+
+		[TestMethod()]
+		public void CreateParameterTest()
+		{
+			var p = new SqlParameter("@holder", SqlDbType.VarChar, 256);
+			Assert.AreEqual("@holder", p.ParameterName);
+			Assert.AreEqual(256, p.Size);
 		}
 
 		[TestMethod()]
