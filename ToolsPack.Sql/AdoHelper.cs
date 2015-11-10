@@ -91,15 +91,24 @@ namespace ToolsPack.Sql
 			// Set command type
 			cmd.CommandType = type;
 
+			int L = args.Length;
+
 			// Construct SQL parameters
-			for (int i = 0; i < args.Length; i++)
+			for (int i = 0; i < L; i++)
 			{
-				if (args[i] is string && i < (args.Length - 1))
+				if (args[i] is string && i+1 < L)
 				{
-					SqlParameter parm = new SqlParameter();
-					parm.ParameterName = (string)args[i];
-					parm.Value = args[++i];
-					cmd.Parameters.Add(parm);
+					SqlParameter param = new SqlParameter();
+					param.ParameterName = (string)args[i];
+					param.Value = args[++i]; 
+
+					//if value is a string, so the next args might be the size
+					if (param.Value is string && i+1 < L && args[i+1] is int)
+					{
+						param.Size = (int)args[++i]; //the next args is really the size
+					}
+
+					cmd.Parameters.Add(param);
 				}
 				else if (args[i] is SqlParameter)
 				{
