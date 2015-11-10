@@ -15,7 +15,10 @@ namespace ToolsPack.Sql
 	///        " FROM Article WHERE ArtApproved = @Approved AND ArtUpdated > @Updated";
 	///
 	///    using (AdoHelper db = new AdoHelper())
-	///    using (SqlDataReader rdr = db.ExecDataReader(qry, "@Approved", true,
+	///    using (SqlDataReader rdr = db.ExecDataReader(qry, 
+	///        "@Approved", true,
+	///        "@Fuu", "Beuh",
+	///        "@Foo", "Bazz", 50 //50 is the parameter size to optimize query cache in some case
 	///        "@Updated", new DateTime(2011, 3, 1)))
 	///    {
 	///        while (rdr.Read())
@@ -23,6 +26,8 @@ namespace ToolsPack.Sql
 	///            // Get row of data from rdr
 	///        }
 	///    }
+	/// 
+	/// Note: The optional parameter size exist only for string parameters
 	/// </summary>
 	public class AdoHelper : IDisposable
 	{
