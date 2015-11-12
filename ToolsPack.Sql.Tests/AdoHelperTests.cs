@@ -37,9 +37,11 @@ namespace ToolsPack.Sql.Tests
 					"@k1", 14,
 					"@k2", (decimal)12.5,
 					"@k3", "bbb", 50,  //with size
-					"@k4", 1.5);
+					"@k4", 1.5,
+					"@k5", new DateTime(2015, 5, 21),
+                    "@k6", null);
 
-				Assert.AreEqual(5, cmd.Parameters.Count);
+				Assert.AreEqual(7, cmd.Parameters.Count);
 
 				Assert.AreEqual("@k0", cmd.Parameters[0].ParameterName);
 				Assert.AreEqual("aaa", cmd.Parameters[0].Value);
@@ -56,6 +58,12 @@ namespace ToolsPack.Sql.Tests
 
 				Assert.AreEqual("@k4", cmd.Parameters[4].ParameterName);
 				Assert.AreEqual(1.5, cmd.Parameters[4].Value);
+
+				Assert.AreEqual("@k5", cmd.Parameters[5].ParameterName);
+				Assert.AreEqual(new DateTime(2015, 5, 21), cmd.Parameters[5].Value);
+
+				Assert.AreEqual("@k6", cmd.Parameters[6].ParameterName);
+				Assert.IsNull(cmd.Parameters[6].Value);
 			}
 		}
 	}
