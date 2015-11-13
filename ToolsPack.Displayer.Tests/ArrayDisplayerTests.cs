@@ -19,7 +19,7 @@ namespace ToolsPack.Displayer.Tests
 		public void DisplayTest()
 		{
 			var arr = new[] {"hoai", "trang", "nhu"};
-			arr.Display().SeparatedByVirgule().MaxItemLength(100, ArrayDisplayer.WordEllipsis);
+			arr.Display().SeparatedByComma().MaxItemLength(100, ArrayDisplayer.WordEllipsis);
 			arr.Display().SeparatedByNewLine().MaxItems(100).MaxItemLength(100, ArrayDisplayer.DefaultEllipsis);
 		}
 

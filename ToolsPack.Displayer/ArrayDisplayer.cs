@@ -41,7 +41,7 @@ namespace ToolsPack.Displayer
 				return this;
 			}
 
-			public Displayer SeparatedByVirgule()
+			public Displayer SeparatedByComma()
 			{
 				_separator = ", ";
 				return this;
