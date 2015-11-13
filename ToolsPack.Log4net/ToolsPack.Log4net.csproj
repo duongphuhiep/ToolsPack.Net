@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="ToolsPack.Log4net.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ToolsPack.Displayer\ToolsPack.Displayer.csproj">
