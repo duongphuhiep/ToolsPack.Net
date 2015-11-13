@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 
 [assembly: AssemblyTitle("ToolsPack.Log4net")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Useful tools to generate logs message using log4net")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("hiep")]
 [assembly: AssemblyProduct("ToolsPack.Log4net")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]

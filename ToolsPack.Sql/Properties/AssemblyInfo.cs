@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("ToolsPack.Sql")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Thin layer function, to avoid redundancy code while working with pure ADO.NET")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("hiep")]
 [assembly: AssemblyProduct("ToolsPack.Sql")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]

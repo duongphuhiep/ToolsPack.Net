@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("ToolsPack.Displayer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Tools to display nicely some C# object: array, Stopwatch.. useful to generate log messages")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("hiep")]
 [assembly: AssemblyProduct("ToolsPack.Displayer")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
