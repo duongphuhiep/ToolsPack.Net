@@ -105,14 +105,16 @@ namespace ToolsPack.Sql
 				{
 					SqlParameter param = new SqlParameter();
 					param.ParameterName = (string)args[i];
-					param.Value = args[++i]; 
+
+					var v = args[++i];
 
 					//if value is a string, so the next args might be the size
-					if (param.Value is string && i+1 < L && args[i+1] is int)
+					if (v is string && i+1 < L && args[i+1] is int)
 					{
 						param.Size = (int)args[++i]; //the next args is really the size
 					}
 
+					param.Value = v == null ? DBNull.Value : v;
 					cmd.Parameters.Add(param);
 				}
 				else if (args[i] is SqlParameter)
