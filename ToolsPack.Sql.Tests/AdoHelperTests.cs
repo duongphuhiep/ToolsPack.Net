@@ -63,7 +63,7 @@ namespace ToolsPack.Sql.Tests
 				Assert.AreEqual(new DateTime(2015, 5, 21), cmd.Parameters[5].Value);
 
 				Assert.AreEqual("@k6", cmd.Parameters[6].ParameterName);
-				Assert.IsNull(cmd.Parameters[6].Value);
+				Assert.AreEqual(DBNull.Value, cmd.Parameters[6].Value);
 			}
 		}
 	}
