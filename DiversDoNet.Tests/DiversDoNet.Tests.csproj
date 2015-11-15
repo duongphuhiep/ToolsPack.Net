@@ -38,8 +38,9 @@
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Shielded">
-      <HintPath>..\packages\Shielded.1.1.3\lib\net40\Shielded.dll</HintPath>
+    <Reference Include="Shielded, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Shielded.2.1.0\lib\net40\Shielded.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">

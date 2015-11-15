@@ -8,14 +8,15 @@ namespace ToolsPack.Displayer
 {
 	/// <summary>
 	/// convert Array/List to String (used in log message)
-	///This class must not depend on anything else
+	///This class must not depend on anything else, 
+	///and can be move to anywhere (CommonServices for example)
 	/// 
 	/// IEnumerable arr;
 	/// arr.Display().SeparatedBy("; ").MaxItems()
 	/// </summary>
 	public static class ArrayDisplayer
 	{
-		public class Displayer
+		public class ArrayFormat
 		{
 			private readonly IEnumerable _arr;
 			private int _maxItems = int.MaxValue;
@@ -24,42 +25,42 @@ namespace ToolsPack.Displayer
 			private Func<string, int, string, string> _ellipsis = null;
 			private int _maxItemLength = int.MaxValue;
 
-			public Displayer(IEnumerable arr)
+			public ArrayFormat(IEnumerable arr)
 			{
 				_arr = arr;
 			}
 
-			public Displayer SeparatedBy(string separator)
+			public ArrayFormat SeparatedBy(string separator)
 			{
 				_separator = separator;
 				return this;
 			}
 
-			public Displayer SeparatedByNewLine()
+			public ArrayFormat SeparatedByNewLine()
 			{
 				_separator = Environment.NewLine;
 				return this;
 			}
 
-			public Displayer SeparatedByVirgule()
+			public ArrayFormat SeparatedByVirgule()
 			{
 				_separator = ", ";
 				return this;
 			}
 
-			public Displayer MaxItems(int maxItems)
+			public ArrayFormat MaxItems(int maxItems)
 			{
 				_maxItems = maxItems;
 				return this;
 			}
 
-			public Displayer TypicalLength(int typicalLength)
+			public ArrayFormat TypicalLength(int typicalLength)
 			{
 				_typicalLength = typicalLength;
 				return this;
 			}
 
-			public Displayer MaxItemLength(int maxItemLength)
+			public ArrayFormat MaxItemLength(int maxItemLength)
 			{
 				_maxItemLength = maxItemLength;
 				_ellipsis = ArrayDisplayer.DefaultEllipsis;
@@ -72,7 +73,7 @@ namespace ToolsPack.Displayer
 			/// - WordEllipsis
 			/// - WordEllipsisStrictLength
 			/// </summary>
-			public Displayer MaxItemLength(int maxItemLength, Func<string, int, string, string> ellipsis)
+			public ArrayFormat MaxItemLength(int maxItemLength, Func<string, int, string, string> ellipsis)
 			{
 				_maxItemLength = maxItemLength;
 				_ellipsis = ellipsis;
@@ -89,9 +90,9 @@ namespace ToolsPack.Displayer
 			}
 		}
 
-		public static Displayer Display(this IEnumerable arr)
+		public static ArrayFormat Display(this IEnumerable arr)
 		{
-			return new Displayer(arr);
+			return new ArrayFormat(arr);
 		}
 
 		/// <summary>
