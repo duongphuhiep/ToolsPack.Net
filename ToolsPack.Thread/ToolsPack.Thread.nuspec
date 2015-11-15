@@ -11,9 +11,9 @@
 		<iconUrl>https://lh4.googleusercontent.com/-VgSJNwk2FB4/Ts-0IhWLO9I/AAAAAAAACXg/BbQEppr15eQ/w643-h641-no/Z20110402-200403.png</iconUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<summary>$description$</summary>
-		<description>Cannot imagine ADO.net without these tools. Thanks Jonathan Wood (blackbeltcoder) and Karl Anderson (Stackoverflow)</description>
+		<description>Advance lock pattern</description>
 		<releaseNotes>Update</releaseNotes>
 		<copyright>Copyright 2015</copyright>
-		<tags>log4net stopwatch tool</tags>
+		<tags>thread lock multithreading</tags>
 	</metadata>
 </package>

@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 
 [assembly: AssemblyTitle("ToolsPack.Thread")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Advance locking pattern multiple lock key with timeout")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("hiep")]
 [assembly: AssemblyProduct("ToolsPack.Thread")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
