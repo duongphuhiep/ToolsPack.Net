@@ -12,7 +12,7 @@ namespace ToolsPack.Displayer
 	///and can be move to anywhere (CommonServices for example)
 	/// 
 	/// IEnumerable arr;
-	/// arr.Display().SeparatedBy("; ").MaxItems()
+	/// arr.Display().SeparatedBy("; ").MaxItems(5);
 	/// </summary>
 	public static class ArrayDisplayer
 	{

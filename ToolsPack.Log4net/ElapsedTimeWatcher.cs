@@ -11,7 +11,7 @@ namespace ToolsPack.Log4net
 	/// 
 	///            private static readonly ILog Log = LogManager.GetLogger(typeof(MyClass));
 	/// 
-	///            using (var etw = new ElapsedTimeWatcher(Log, "checkIntraday"))
+	///            using (var etw = ElapsedTimeWatcher.Create(Log, "checkIntraday"))
 	///            {
 	///                Thread.Sleep(100);
 	///                etw.DebugEnd("step 1");

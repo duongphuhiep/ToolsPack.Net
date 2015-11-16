@@ -9,7 +9,7 @@ namespace ToolsPack.Sql
 {
 	/// <summary>
 	/// Helper class for SqlDataReader, which allows for the calling code to retrieve a value in a generic fashion.
-	/// http://stackoverflow.com/questions/18550769/sqldatareader-best-way-to-check-for-null-values-sqldatareader-isdbnull-vs-dbnul
+	/// http://stackoverflow.com/a/18551053/347051
 	/// 
 	///   yourSqlReaderObject.GetValue<int?>("SOME_ID_COLUMN");
 	///   yourSqlReaderObject.GetValue<string>("SOME_VALUE_COLUMN");
