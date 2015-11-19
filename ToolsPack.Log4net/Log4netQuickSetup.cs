@@ -31,7 +31,7 @@ namespace ToolsPack.Log4net
 		/// </summary>
 		public static string GetSimplePattern(string threadContextPropertyName = null)
 		{
-			if (String.IsNullOrWhiteSpace(threadContextPropertyName))
+			if (string.IsNullOrEmpty(threadContextPropertyName))
 			{
 				return "[%-5level] %message%newline";
 			}

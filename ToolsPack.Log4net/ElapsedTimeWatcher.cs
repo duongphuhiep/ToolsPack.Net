@@ -75,11 +75,11 @@ namespace ToolsPack.Log4net
 		public static ElapsedTimeWatcher Create(ILog log, string scopeId, string beginContext = null, string endContext = null,
 			string spaceBeforeLog = null)
 		{
-			if (String.IsNullOrWhiteSpace(beginContext))
+			if (string.IsNullOrEmpty(beginContext))
 			{
 				beginContext = scopeId;
 			}
-			if (String.IsNullOrWhiteSpace(endContext))
+			if (string.IsNullOrEmpty(endContext))
 			{
 				endContext = beginContext.Length < 256 ? beginContext : scopeId;
 			}

@@ -35,10 +35,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="C5">
+    <Reference Include="C5, Version=2.3.5280.26713, Culture=neutral, PublicKeyToken=282361b99ded7e8e, processorArchitecture=MSIL">
       <HintPath>..\packages\C5.2.3.0.1\lib\net40\C5.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="log4net">
+    <Reference Include="log4net, Version=1.2.14.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.4\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
