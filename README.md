@@ -4,6 +4,8 @@ Some of the most-used library are published on nuget.
 
 https://www.nuget.org/profiles/duongphuhiep
 
-[See wiki document for brief introduction code](https://github.com/duongphuhiep/ToolsPack.Net/wiki)
+* [See wiki document for brief introduction code](https://github.com/duongphuhiep/ToolsPack.Net/wiki)
+* [This sample](https://github.com/duongphuhiep/ToolsPack.Net/wiki/ToolsPack.Net-Usage-Sample) demonstrates How usefull 
+[`ToolsPack.Net`](https://github.com/duongphuhiep/ToolsPack.Net/wiki) is.
 
 Navigate to the code and unit test samples for more information.
