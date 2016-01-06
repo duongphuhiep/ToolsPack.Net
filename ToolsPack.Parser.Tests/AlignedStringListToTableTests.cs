@@ -24,14 +24,14 @@ namespace ToolsPack.Parser.Tests
 		public void FindWeakColumnBreaksTest()
 		{
 			{
-				var breakPos = AlignedStringListToTable.FindWeakColumnBreaks("a    bcd   50 8      7");
-				Assert.AreEqual(2, breakPos.Count);
+				var breakPos = AlignedStringListToTable.FindWeakColumnBreaks("a    bcd   50 8      7").ToArray();
+				Assert.AreEqual(2, breakPos.Length);
 				Assert.AreEqual(5, breakPos[0]);
 				Assert.AreEqual(21, breakPos[1]);
 			}
 			{
-				var breakPos = AlignedStringListToTable.FindWeakColumnBreaks("ab bcd       50 88      7                   cde fg        hh");
-				Assert.AreEqual(4, breakPos.Count);
+				var breakPos = AlignedStringListToTable.FindWeakColumnBreaks("ab bcd       50 88      7                   cde fg        hh").ToArray();
+				Assert.AreEqual(4, breakPos.Length);
 				Assert.AreEqual(13, breakPos[0]);
 				Assert.AreEqual(24, breakPos[1]);
 				Assert.AreEqual(44, breakPos[2]);
@@ -43,34 +43,34 @@ namespace ToolsPack.Parser.Tests
 		public void FindNormalColumnBreaksTest()
 		{
 			{
-				List<int>[] weaks = new[] {
-					new List<int>() { 21, 49, 72, 54 },
-					new List<int>() { 21, 44, 72, 56 },
-					new List<int>() { 21, 43, 70, 77 },
+				SortedSet<int>[] weaks = new[] {
+					new SortedSet<int>() { 21, 49, 72, 54 },
+					new SortedSet<int>() { 21, 44, 72, 56 },
+					new SortedSet<int>() { 21, 43, 70, 77 },
 				};
-				var breakPos = AlignedStringListToTable.FindNormalColumnBreaks(weaks);
-				Assert.AreEqual(2, breakPos.Count);
+				var breakPos = AlignedStringListToTable.FindNormalColumnBreaks(weaks).ToArray();
+				Assert.AreEqual(2, breakPos.Length);
 				Assert.AreEqual(21, breakPos[0]);
 				Assert.AreEqual(72, breakPos[1]);
 			}
 			{
-				List<int>[] weaks = new[] {
-					new List<int>() { 21, 49, 72, 54 },
-					new List<int>() { 21, 44, 72, 56 },
-					new List<int>() { 21, 43, 70, 54 },
+				SortedSet<int>[] weaks = new[] {
+					new SortedSet<int>() { 21, 49, 72, 54 },
+					new SortedSet<int>() { 21, 44, 72, 56 },
+					new SortedSet<int>() { 21, 43, 70, 54 },
 				};
-				var breakPos = AlignedStringListToTable.FindNormalColumnBreaks(weaks);
-				Assert.AreEqual(3, breakPos.Count);
+				var breakPos = AlignedStringListToTable.FindNormalColumnBreaks(weaks).ToArray();
+				Assert.AreEqual(3, breakPos.Length);
 				Assert.AreEqual(21, breakPos[0]);
-				Assert.AreEqual(72, breakPos[1]);
-				Assert.AreEqual(54, breakPos[2]);
+				Assert.AreEqual(54, breakPos[1]);
+				Assert.AreEqual(72, breakPos[2]);
 			}
 		}
 
 		[TestMethod()]
 		public void GetNeareastPositionTest()
 		{
-			var arr = new List<int>() { 1, 7, 8, 20, 79, 201 };
+			var arr = new SortedSet<int>() { 1, 7, 8, 20, 79, 201 };
 
 			int nearestPos, minDist;
 			AlignedStringListToTable.GetNeareastPosition(arr, 3, out nearestPos, out minDist);
@@ -90,8 +90,8 @@ namespace ToolsPack.Parser.Tests
 		public void FindHardColumnBreaksTest()
 		{
 			{
-				List<int> normal = new List<int>() { 3, 40, 55, 100 };
-				List<int> weak = new List<int>() { 8, 42, 55, 78, 96 };
+				SortedSet<int> normal = new SortedSet<int>() { 3, 40, 55, 100 };
+				SortedSet<int> weak = new SortedSet<int>() { 8, 42, 55, 78, 96 };
 
 				var hard = AlignedStringListToTable.FindHardColumnBreaks(normal, weak, 4);
 				Assert.AreEqual("{ 3, 42, 55, 96 }", hard.Display().ToString());
@@ -99,8 +99,8 @@ namespace ToolsPack.Parser.Tests
 
 			//unodred list
 			{
-				List<int> normal = new List<int>() { 3, 55, 40, 100 };
-				List<int> weak = new List<int>() { 55, 42, 96, 8, 78 };
+				SortedSet<int> normal = new SortedSet<int>() { 3, 55, 40, 100 };
+				SortedSet<int> weak = new SortedSet<int>() { 55, 42, 96, 8, 78 };
 
 				var hard = AlignedStringListToTable.FindHardColumnBreaks(normal, weak, 4);
 				Assert.AreEqual("{ 3, 42, 55, 96 }", hard.Display().ToString());
@@ -116,7 +116,7 @@ namespace ToolsPack.Parser.Tests
 				"cccc        18       ccc ceerergfcc 29  27   28",
 				"dddd dd eeee19       dd          gggg 2927   25"
 			};
-			
+
 			var expectedResult = new[] {
 				new[]{ "aa aa", "15", "aaaaaa", "aa", "17"},
 				new[]{ "b bbbb", "165", "bb", "bbb 26c", "18"},
@@ -125,16 +125,26 @@ namespace ToolsPack.Parser.Tests
 			};
 
 			var converter = new AlignedStringListToTable(src, true, 3);
-			var resu = converter.Porcess();
+			var resu = converter.Process();
 
 			for (int i = 0; i < expectedResult.Length; i++)
 			{
 				var row = expectedResult[i];
-                for (int j = 0; j < row.Length; j++)
+				for (int j = 0; j < row.Length; j++)
 				{
 					Assert.AreEqual(row[j], resu[i][j]);
 				}
 			}
 		}
-    }
+
+		[TestMethod()]
+		public void GetNeareastPositionTest1()
+		{
+			int nearestPos;
+			int minDist;
+			AlignedStringListToTable.GetNeareastPosition(new SortedSet<int>() { }, 15, out nearestPos, out minDist);
+			Assert.AreEqual(0, nearestPos);
+			Assert.AreEqual(15, minDist);
+		}
+	}
 }

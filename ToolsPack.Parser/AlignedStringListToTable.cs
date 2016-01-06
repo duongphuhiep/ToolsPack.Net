@@ -80,16 +80,16 @@ namespace ToolsPack.Parser
 		/// <summary>
 		/// weak columns breaks of each row
 		/// </summary>
-		private List<int>[] weaks;
+		private SortedSet<int>[] weaks;
 
 		/// <summary>
 		/// normal columns breaks
 		/// </summary>
-		private List<int> normal;
+		private SortedSet<int> normal;
 
 		string[][] result;
 
-		public AlignedStringListToTable(string[] src, bool trimCells=true, int bigSpaceMinLength=4, double weakToNormalThreshold=0.6, int weakDistance=4)
+		public AlignedStringListToTable(string[] src, bool trimCells=true, int bigSpaceMinLength=4, double weakToNormalThreshold=0.4, int weakDistance=4)
 		{
 			this.src = src;
 			this.BigSpaceMinLength = bigSpaceMinLength;
@@ -98,14 +98,14 @@ namespace ToolsPack.Parser
 			this.TrimCells = trimCells;
         }
 
-		public string[][] Porcess()
+		public string[][] Process()
 		{
 			var context = string.Format("Convert {0}", this.src.Display().MaxItemLength(10).MaxItems(3));
 			using (var etw = ElapsedTimeWatcher.Create(Log, "process", context))
 			{
 				if (this.result != null) { return this.result; }
 
-				this.weaks = new List<int>[src.Length];
+				this.weaks = new SortedSet<int>[src.Length];
 				for (var i = 0; i < src.Length; i++)
 				{
 					this.weaks[i] = FindWeakColumnBreaks(src[i], this.BigSpaceMinLength);
@@ -119,6 +119,7 @@ namespace ToolsPack.Parser
 				for (var i = 0; i < src.Length; i++)
 				{
 					var hard = FindHardColumnBreaks(this.normal, this.weaks[i], this.WeakDistance);
+					etw.DebugFormat("Hard column break on {0} = {1}", i, hard.Display());
 					this.result[i] = StringTools.Split(src[i], hard, this.TrimCells);
 				}
 
@@ -130,9 +131,9 @@ namespace ToolsPack.Parser
 		/// <summary>
 		/// Return the weak column break of the string row
 		/// </summary>
-		public static List<int> FindWeakColumnBreaks(string row, int bigSpaceMinLength=4)
+		public static SortedSet<int> FindWeakColumnBreaks(string row, int bigSpaceMinLength=4)
 		{
-			var resu = new List<int>();
+			var resu = new SortedSet<int>();
 			var found = Regex.Matches(row, " {" + bigSpaceMinLength + "}[^ ]", RegexOptions.IgnoreCase);
 
 			var n = found.Count;
@@ -147,7 +148,7 @@ namespace ToolsPack.Parser
 		/// <summary>
 		/// Find all the weaks column break which occurs more than 60% (occurenceThreshold)
 		/// </summary>
-		public static List<int> FindNormalColumnBreaks(List<int>[] weaks, double occurenceThreshold = 0.6)
+		public static SortedSet<int> FindNormalColumnBreaks(SortedSet<int>[] weaks, double occurenceThreshold = 0.6)
 		{
 			var n = weaks.Length;
 
@@ -168,7 +169,7 @@ namespace ToolsPack.Parser
 				}
 			}
 
-			var resu = new List<int>();
+			var resu = new SortedSet<int>();
 
 			//filter by occurenceThreshold
 			foreach (var pos in stats.Keys)
@@ -186,13 +187,13 @@ namespace ToolsPack.Parser
 		/// For each normal column-break to we will promote it to hard column-break, except if there is a weak column-break near it
 		/// (winthin the weakDistance) then weak column-break will be promoted instead. 
 		/// </summary>
-		public static SortedSet<int> FindHardColumnBreaks(List<int> normal, List<int> weak, int weakDistance = 4)
+		public static SortedSet<int> FindHardColumnBreaks(SortedSet<int> normal, SortedSet<int> weak, int weakDistance = 4)
 		{
 			var resu = new SortedSet<int>();
 
 			foreach (int pos in normal)
 			{
-				//find the neareast weak colum break near it
+				//find the neareast weak column break near it
 				int nearestPos, minDist;
 				GetNeareastPosition(weak, pos, out nearestPos, out minDist);
 				resu.Add(minDist <= weakDistance ? nearestPos : pos);
@@ -206,12 +207,18 @@ namespace ToolsPack.Parser
 		/// Example: given arr = {1, 5, 40, 96}
 		/// The neareast value for pos=48 is 40 and the distance (minDist) is 8
 		/// </summary>
-		public static void GetNeareastPosition(List<int> arr, int pos, out int nearestPos, out int minDist)
+		public static void GetNeareastPosition(SortedSet<int> columnsBreak, int pos, out int nearestPos, out int minDist)
 		{
+			var arr = columnsBreak.ToArray();
+			if (arr.Length == 0) {
+				minDist = pos;
+				nearestPos = 0;
+				return;
+			}
 			nearestPos = arr[0];
 			minDist = Math.Abs(nearestPos - pos);
 
-			for (var i = 1; i < arr.Count; i++)
+			for (var i = 1; i < arr.Length; i++)
 			{
 				var wp = arr[i];
 				var dist = Math.Abs(wp - pos);

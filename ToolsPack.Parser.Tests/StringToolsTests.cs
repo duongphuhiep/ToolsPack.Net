@@ -28,6 +28,7 @@ namespace ToolsPack.Parser.Tests
 			Assert.AreEqual("78", StringTools.GetSubstring("0123456789", 7, 9));
 			Assert.AreEqual("789", StringTools.GetSubstring("0123456789", 7, 15));
 			Assert.AreEqual(string.Empty, StringTools.GetSubstring("0123456789", 12, 15));
+			Assert.AreEqual(string.Empty, StringTools.GetSubstring("0123456789", 10, 12));
 		}
 
 		[TestMethod()]
@@ -51,5 +52,5 @@ namespace ToolsPack.Parser.Tests
 				Assert.AreEqual("0123456789", cells.Display().ToString());
 			}
 		}
-   }
+	}
 }
