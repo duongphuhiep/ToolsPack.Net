@@ -36,7 +36,7 @@ namespace ToolsPack.Parser
 		}
 
 		/// <summary>
-		/// Get the substring from postion p1 to position p2
+		/// Get the substring from postion 1 to position 2
 		/// </summary>
 		public static string GetSubstring(string str, int p1, int p2, bool trimCells = false)
 		{
@@ -50,7 +50,7 @@ namespace ToolsPack.Parser
 			}
 			if (p1 >= p2)
 			{
-				throw new InvalidOperationException();
+				return string.Empty;
 			}
 			return trimCells ? str.Substring(p1, p2 - p1).Trim() : str.Substring(p1, p2 - p1);
 		}
