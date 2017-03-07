@@ -8,7 +8,7 @@ namespace ToolsPack.Log4net
 {
 	public static class Log4NetQuickSetup
 	{
-		private const string DefaultPattern = "%date{HH:mm:ss,fff} [%-5level] %message [%logger{1}:%line]%newline";
+		private const string DefaultPattern = "%date{HH:mm:ss,fff} [%-5level] %message  [%logger{1}:%line]%newline";
 
 		/// <summary>
 		/// Create a pattern which log a thread property value in all log message
@@ -23,7 +23,7 @@ namespace ToolsPack.Log4net
 		public static string CreatePattern(string threadContextPropertyName)
 		{
 			return "%date{HH:mm:ss,fff} [%-5level] [%property{" + threadContextPropertyName +
-			"}] %message [%logger{1}]%newline";
+			"}] %message  [%logger{1}]%newline";
 		}
 
 		/// <summary>
