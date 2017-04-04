@@ -9,3 +9,9 @@ https://www.nuget.org/profiles/duongphuhiep
 [`ToolsPack.Net`](https://github.com/duongphuhiep/ToolsPack.Net/wiki) is.
 
 Navigate to the code and unit test samples for more information.
+
+## Remark
+
+* I won't update much on this repository because the code is very stable. Nearly Zero-maintenance is needed.
+
+* Maybe the `ToolsPack.Log4Net` is the only one need to upgrade beacause it depends on the [`log4net` package](https://www.nuget.org/packages/log4net/) which is occasionally upgraded. Evens if `ToolsPack.Log4Net` stuck with the old log4net version here, we can of course use it with the newer [`log4net` package](https://www.nuget.org/packages/log4net/)
