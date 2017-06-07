@@ -4,6 +4,10 @@ using log4net;
 
 namespace ToolsPack.Log4net
 {
+	/// <summary>
+	/// Deprecated, use the ConfigReader in the ToolsPack.Config packages instead
+	/// </summary>
+	[System.Obsolete("use ToolsPack.Config.ConfigReader instead")]
 	public static class ConfigReader
 	{
 		private static readonly ILog Log = LogManager.GetLogger(typeof(ConfigReader));
