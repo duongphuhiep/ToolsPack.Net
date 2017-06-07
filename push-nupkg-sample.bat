@@ -1,0 +1,1 @@
+nuget push ToolsPack.Log4net.*.nupkg -ApiKey xxxxx -NonInteractive -Source https://www.nuget.org/api/v2/package
