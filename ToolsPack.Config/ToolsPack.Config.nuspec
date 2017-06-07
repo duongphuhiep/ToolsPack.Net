@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>$id$</id>
+		<version>$version$</version>
+		<title>$title$</title>
+		<authors>$author$</authors>
+		<owners>$author$</owners>
+		<licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+		<projectUrl>https://github.com/duongphuhiep/ToolsPack.Net</projectUrl>
+		<iconUrl>https://lh4.googleusercontent.com/-VgSJNwk2FB4/Ts-0IhWLO9I/AAAAAAAACXg/BbQEppr15eQ/w643-h641-no/Z20110402-200403.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<summary>$description$</summary>
+		<description>Read app.config file</description>
+		<releaseNotes>Update</releaseNotes>
+		<copyright>Copyright 2017</copyright>
+		<tags>parse read config</tags>
+	</metadata>
+</package>
