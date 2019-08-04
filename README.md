@@ -1,3 +1,5 @@
+# The .NETStandard implementation is available [HERE](https://github.com/duongphuhiep/ToolsPack.NetCore)
+
 My collection of many small useful code-snippet .net, wrapping in reusable library with unobtrusive dependencies.
 
 Some of the most-used library are published on nuget.
